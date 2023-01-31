@@ -2,7 +2,8 @@
 Write a function `reject` that accepts an array and callback as arguments. The
 function should call the callback for each element of the array, passing in the
 element. The function should return a new array
-containing elements of the original array that result in false when given to the
+containing elements of the original array
+that result in false when given to the
 callback.
 
 Note that that you cannot use the Array `map` or `filter` methods to solve this
@@ -22,7 +23,12 @@ console.log(reject(['breadth', 'GRAPH', 'depth', 'height'], hasA)); // [ 'depth'
 *******************************************************************************/
 
 function reject(array, cb) {
-  // Your code here
+  let newArr =[];
+  for (let i = 0; i < array.length; i++) {
+    let el = array[i];
+        if (cb(el) === false) newArr.push(el);
+  }
+  return newArr;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

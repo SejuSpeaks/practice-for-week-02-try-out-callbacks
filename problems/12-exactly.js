@@ -28,7 +28,8 @@ console.log(result4); // true
 *******************************************************************************/
 
 function exactly(array, num, cb) {
-  // Your code here
+  let newArr = array.filter(el => cb(el))
+  return newArr.length === num;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

@@ -1,8 +1,13 @@
 /*******************************************************************************
 Write a function `selectiveMap` that accepts an array and two callbacks as arguments.
-The function should return a new array where elements are replaced with the results
-of calling the second callback on the element only if calling the first callback
-on the element results in true. If calling the first callback on an element results
+The function should return a new array
+elements are replaced with the results
+
+calling the second callback on the element only if
+ calling the first callback
+on the element results in true.
+
+If calling the first callback on an element results
 in false, then the element should not be changed in the new array.
 
 Note that that you cannot use the Array `map` or `filter` methods to solve this
@@ -43,7 +48,13 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 *******************************************************************************/
 
 function selectiveMap(array, selector, mapper) {
-    // Your code here
+let newArr = [];
+for (let i = 0; i < array.length; i++) {
+    const el = array[i];
+    if (selector(el)===true) newArr.push(mapper(el))
+    else newArr.push(el);
+}
+return newArr;
 }
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
