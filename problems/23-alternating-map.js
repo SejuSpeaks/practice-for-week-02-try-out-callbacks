@@ -1,6 +1,8 @@
 /*******************************************************************************
 Write a function `alternatingMap` that accepts an array and two callbacks as
-arguments. The function should return a new array containing the results of passing
+arguments.
+
+The function should return a new array containing the results of passing
 the original elements into the callbacks in an alternating fashion.
 
 In other words,
@@ -34,11 +36,47 @@ console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper))
 // [ 'HEY!', '..everyone..', 'WHATS!', '..up??..' ]
 
 *******************************************************************************/
-
+//push into array cb1 then cb2, cb1, then cb2 iterating through the whole array
 function alternatingMap(array, cb1, cb2) {
-  // Your code here
+let boolean = false;
+let newArr = [];
+for (let i = 0; i < array.length; i++) {
+ let el = array[i];
+ if (!boolean) {
+  newArr.push(cb1(el))
+  boolean = true;
+}
+else  {
+  newArr.push(cb2(el))
+  boolean = false;
 }
 
+}
+return newArr;
+}
+
+
+
+let triple = function (n) {
+  return 3 * n;
+};
+
+let half = function (n) {
+  return n / 2;
+};
+console.log(alternatingMap([7, 3, 2, 9, 8], triple, half));
+// [ 21, 1.5, 6, 4.5, 24 ]
+
+
+let yell = function (s) {
+  return s.toUpperCase() + '!';
+};
+
+let whisper = function (s) {
+  return '..' + s.toLowerCase() + '..';
+};
+console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper));
+// [ 'HEY!', '..everyone..', 'WHATS!', '..up??..' ]
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = alternatingMap;
